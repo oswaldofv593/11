@@ -1,18 +1,185 @@
-<!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Productos</title>
+    <title>Infusse</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://placehold.co/1920x1080?text=Streetwear+Background');
+            background-size: cover;
+            background-position: center;
+        }
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 10px;
+            transition: transform 0.3s, background-color 0.3s;
+            position: relative;
+        }
+        .container:hover {
+            transform: scale(1.05);
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: gold;
+        }
+        .login-link {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1em;
+        }
+        .login-link a {
+            font-family: 'Playfair Display', serif;
+            color: gold;
+            text-decoration: none;
+        }
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        .waitlist {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: gold;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            margin-top: -20px;
+        }
+        .container:hover .waitlist {
+            color: #e6b800;
+        }
+        .register-button {
+            background-color: gold;
+            color: #1a1a1a;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s, transform 0.3s;
+            position: absolute;
+        }
+        .register-button a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-family: 'Playfair Display', serif;
+            text-transform: uppercase;
+        }
+        .register-button:hover {
+            background-color: #e6b800;
+            transform: scale(1.1);
+        }
+        .login-form {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            background-color: #333;
+            color: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .login-form input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 250px;
+            border: 1px solid gold;
+            border-radius: 5px;
+            background: #1a1a1a;
+            color: #f0f0f0;
+        }
+        .login-form button {
+            background-color: gold;
+            color: #1a1a1a;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .login-form button:hover {
+            background-color: #e6b800;
+            transform: scale(1.1);
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function showLoginForm() {
+            document.querySelector('.login-form').style.display = 'flex';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const button = document.querySelector('.register-button');
+            const container = document.querySelector('.container');
+            button.addEventListener('mouseover', function() {
+                const containerRect = container.getBoundingClientRect();
+                const buttonRect = button.getBoundingClientRect();
+                const offsetX = Math.random() * (containerRect.width - buttonRect.width - 20);
+                const offsetY = Math.random() * (containerRect.height - buttonRect.height - 20);
+                button.style.left = `${offsetX}px`;
+                button.style.top = `${offsetY}px`;
+            });
+
+            const users = [
+                { email: "usuario1@example.com", password: "contraseña1" },
+                { email: "usuario2@example.com", password: "contraseña2" }
+            ];
+
+            document.getElementById('loginForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
+                const user = users.find(u => u.email === email && u.password === password);
+
+                if (user) {
+                    window.location.href = 'productos.html';
+                } else {
+                    document.getElementById('error').innerText = 'Credenciales incorrectas.';
+                }
+            });
+        });
+    </script>
 </head>
 <body>
-    <h1>Página de Productos</h1>
-    <p>Bienvenido a la página de productos. Aquí están nuestros productos.</p>
-    <ul>
-        <li>Producto 1</li>
-        <li>Producto 2</li>
-        <li>Producto 3</li>
-    </ul>
-    <a href="index.html">Cerrar Sesión</a>
+    <div class="logo">INFUSSE</div>
+    <div class="container">
+        <div class="waitlist">REGÍSTRATE SI PUEDES</div>
+        <button class="register-button">
+            <a href="https://forms.gle/bCXoLi2g2t4zUXcC7" target="_blank">REGÍSTRATE</a>
+        </button>
+    </div>
+    <div class="login-link">
+        <a href="javascript:void(0);" onclick="showLoginForm()"><i class="fas fa-lock"></i> ENTRAR USANDO CONTRASEÑA</a>
+    </div>
+    <div class="login-form">
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="CORREO ELECTRÓNICO" required>
+            <input type="password" id="password" placeholder="CONTRASEÑA" required>
+            <button type="submit">INICIAR SESIÓN</button>
+        </form>
+        <div id="error" class="error"></div>
+    </div>
 </body>
 </html>
