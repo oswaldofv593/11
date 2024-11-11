@@ -1,185 +1,344 @@
-<html>
-<head>
-    <title>Infusse</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #1a1a1a;
-            color: #f0f0f0;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-image: url('https://placehold.co/1920x1080?text=Streetwear+Background');
-            background-size: cover;
-            background-position: center;
+<html lang="es">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Nuevo Drop de Ropa - Marca Streetwear
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
         }
-        .container {
-            text-align: center;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 40px;
-            border-radius: 10px;
-            transition: transform 0.3s, background-color 0.3s;
-            position: relative;
-        }
-        .container:hover {
-            transform: scale(1.05);
-            background-color: rgba(0, 0, 0, 0.9);
-        }
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5em;
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            color: gold;
-        }
-        .login-link {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 1em;
-        }
-        .login-link a {
-            font-family: 'Playfair Display', serif;
-            color: gold;
-            text-decoration: none;
-        }
-        .login-link a:hover {
-            text-decoration: underline;
-        }
-        .waitlist {
-            font-family: 'Playfair Display', serif;
-            font-size: 2em;
-            margin-bottom: 20px;
-            color: gold;
-            transition: color 0.3s;
-            text-transform: uppercase;
-            margin-top: -20px;
-        }
-        .container:hover .waitlist {
-            color: #e6b800;
-        }
-        .register-button {
-            background-color: gold;
-            color: #1a1a1a;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 20px;
-            transition: background-color 0.3s, transform 0.3s;
-            position: absolute;
-        }
-        .register-button a {
-            text-decoration: none;
-            color: #1a1a1a;
-            font-family: 'Playfair Display', serif;
-            text-transform: uppercase;
-        }
-        .register-button:hover {
-            background-color: #e6b800;
-            transform: scale(1.1);
-        }
-        .login-form {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            background-color: #333;
-            color: #f0f0f0;
-            padding: 20px;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-        .login-form input {
-            margin: 10px 0;
-            padding: 10px;
-            width: 250px;
-            border: 1px solid gold;
-            border-radius: 5px;
-            background: #1a1a1a;
-            color: #f0f0f0;
-        }
-        .login-form button {
-            background-color: gold;
-            color: #1a1a1a;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        .login-form button:hover {
-            background-color: #e6b800;
-            transform: scale(1.1);
-        }
-        .error {
-            color: red;
-            margin-top: 10px;
-        }
-    </style>
-    <script>
-        function showLoginForm() {
-            document.querySelector('.login-form').style.display = 'flex';
-        }
+  </style>
+  <script>
+   function openPaymentModal(itemName, itemPrice) {
+        const modal = document.getElementById('paymentModal');
+        document.getElementById('modalItemName').innerText = itemName;
+        document.getElementById('modalItemPrice').innerText = itemPrice;
+        modal.classList.remove('hidden');
+    }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const button = document.querySelector('.register-button');
-            const container = document.querySelector('.container');
-            button.addEventListener('mouseover', function() {
-                const containerRect = container.getBoundingClientRect();
-                const buttonRect = button.getBoundingClientRect();
-                const offsetX = Math.random() * (containerRect.width - buttonRect.width - 20);
-                const offsetY = Math.random() * (containerRect.height - buttonRect.height - 20);
-                button.style.left = `${offsetX}px`;
-                button.style.top = `${offsetY}px`;
-            });
-
-            const users = [
-                { email: "usuario1@example.com", password: "contraseña1" },
-                { email: "usuario2@example.com", password: "contraseña2" }
-            ];
-
-            document.getElementById('loginForm').addEventListener('submit', function(event) {
-                event.preventDefault();
-                const email = document.getElementById('email').value;
-                const password = document.getElementById('password').value;
-
-                const user = users.find(u => u.email === email && u.password === password);
-
-                if (user) {
-                    window.location.href = 'productos.html';
-                } else {
-                    document.getElementById('error').innerText = 'Credenciales incorrectas.';
-                }
-            });
-        });
-    </script>
-</head>
-<body>
-    <div class="logo">INFUSSE</div>
-    <div class="container">
-        <div class="waitlist">REGÍSTRATE SI PUEDES</div>
-        <button class="register-button">
-            <a href="https://forms.gle/bCXoLi2g2t4zUXcC7" target="_blank">REGÍSTRATE</a>
-        </button>
+    function closePaymentModal() {
+        const modal = document.getElementById('paymentModal');
+        modal.classList.add('hidden');
+    }
+  </script>
+ </head>
+ <body class="bg-gray-100 text-gray-900">
+  <header class="bg-black text-white py-4">
+   <div class="container mx-auto flex justify-between items-center">
+    <h1 class="text-3xl font-bold">
+     Marca Streetwear
+    </h1>
+    <nav>
+     <ul class="flex space-x-4">
+      <li>
+       <a class="hover:text-gray-400" href="#">
+        Inicio
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-gray-400" href="#">
+        Colecciones
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-gray-400" href="#">
+        Tienda
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-gray-400" href="#">
+        Contacto
+       </a>
+      </li>
+     </ul>
+    </nav>
+   </div>
+  </header>
+  <main class="container mx-auto py-8">
+   <section class="text-center mb-12">
+    <h2 class="text-4xl font-bold mb-4">
+     Nuevo Drop Exclusivo
+    </h2>
+    <p class="text-lg">
+     Descubre nuestra última colección de ropa streetwear. ¡No te lo pierdas!
+    </p>
+   </section>
+   <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="bg-white p-4 rounded-lg shadow-lg cursor-pointer" onclick="openPaymentModal('Camiseta Negra', '$29.99')">
+     <img alt="Imagen de una camiseta negra con un diseño gráfico en el frente" class="w-full h-64 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/NCix9hltO3ZvKpKMopTYbI9Q7okAlAXOofw3gAnFAvImr53JA.jpg" width="400"/>
+     <div class="mt-4">
+      <h3 class="text-xl font-bold">
+       Camiseta Negra
+      </h3>
+      <p class="text-gray-600">
+       Camiseta negra con diseño gráfico exclusivo.
+      </p>
+      <p class="text-lg font-bold mt-2">
+       $29.99
+      </p>
+     </div>
     </div>
-    <div class="login-link">
-        <a href="javascript:void(0);" onclick="showLoginForm()"><i class="fas fa-lock"></i> ENTRAR USANDO CONTRASEÑA</a>
+    <div class="bg-white p-4 rounded-lg shadow-lg">
+     <img alt="Imagen de una sudadera con capucha gris con un logo en el pecho" class="w-full h-64 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/QBqhEUPdeG3GNy9GNAanR03q4TSiw9JlzeQpYNCZyX3FXzvTA.jpg" width="400"/>
+     <div class="mt-4">
+      <h3 class="text-xl font-bold">
+       Sudadera con Capucha
+      </h3>
+      <p class="text-gray-600">
+       Sudadera gris con capucha y logo en el pecho.
+      </p>
+      <p class="text-lg font-bold mt-2">
+       $49.99
+      </p>
+     </div>
     </div>
-    <div class="login-form">
-        <form id="loginForm">
-            <input type="email" id="email" placeholder="CORREO ELECTRÓNICO" required>
-            <input type="password" id="password" placeholder="CONTRASEÑA" required>
-            <button type="submit">INICIAR SESIÓN</button>
-        </form>
-        <div id="error" class="error"></div>
+    <div class="bg-white p-4 rounded-lg shadow-lg">
+     <img alt="Imagen de unos pantalones cargo negros con múltiples bolsillos" class="w-full h-64 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/3CXxZVxdGMoaEBEmj3zsLYtViHy4XMwBjh3DQOfky5Vqr53JA.jpg" width="400"/>
+     <div class="mt-4">
+      <h3 class="text-xl font-bold">
+       Pantalones Cargo
+      </h3>
+      <p class="text-gray-600">
+       Pantalones cargo negros con múltiples bolsillos.
+      </p>
+      <p class="text-lg font-bold mt-2">
+       $39.99
+      </p>
+     </div>
     </div>
-</body>
+    <div class="bg-white p-4 rounded-lg shadow-lg">
+     <img alt="Imagen de una gorra negra con un logo bordado en el frente" class="w-full h-64 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/4fy7Upxgkjzwcy97AEmCwI9OjKnZYsFDuScs2SH4rZGnr53JA.jpg" width="400"/>
+     <div class="mt-4">
+      <h3 class="text-xl font-bold">
+       Gorra Negra
+      </h3>
+      <p class="text-gray-600">
+       Gorra negra con logo bordado en el frente.
+      </p>
+      <p class="text-lg font-bold mt-2">
+       $19.99
+      </p>
+     </div>
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow-lg">
+     <img alt="Imagen de una chaqueta bomber verde oliva con cremallera frontal" class="w-full h-64 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/P3Cyofx2HgwuHqLRd0BHUvtnxZdDlz7P8VHK2WlV4Vdir53JA.jpg" width="400"/>
+     <div class="mt-4">
+      <h3 class="text-xl font-bold">
+       Chaqueta Bomber
+      </h3>
+      <p class="text-gray-600">
+       Chaqueta bomber verde oliva con cremallera frontal.
+      </p>
+      <p class="text-lg font-bold mt-2">
+       $59.99
+      </p>
+     </div>
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow-lg">
+     <img alt="Imagen de una camiseta blanca con un diseño gráfico en la espalda" class="w-full h-64 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/IUaRPJqBqQ7BL5OjXK3fKLm2WzwleH0MSg1Scrwh8FILXzvTA.jpg" width="400"/>
+     <div class="mt-4">
+      <h3 class="text-xl font-bold">
+       Camiseta Blanca
+      </h3>
+      <p class="text-gray-600">
+       Camiseta blanca con diseño gráfico en la espalda.
+      </p>
+      <p class="text-lg font-bold mt-2">
+       $29.99
+      </p>
+     </div>
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow-lg">
+     <img alt="Imagen de una mochila negra con múltiples compartimentos" class="w-full h-64 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/1vuoX0lhMrrGP1WImekBQCqh72bnnwxpEq644ZZ1MB6jr53JA.jpg" width="400"/>
+     <div class="mt-4">
+      <h3 class="text-xl font-bold">
+       Mochila Negra
+      </h3>
+      <p class="text-gray-600">
+       Mochila negra con múltiples compartimentos.
+      </p>
+      <p class="text-lg font-bold mt-2">
+       $49.99
+      </p>
+     </div>
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow-lg">
+     <img alt="Imagen de unos calcetines blancos con rayas negras" class="w-full h-64 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/towRk10Wfd2mPCNspXkEV7y43b8n6ZvIaZf8KhYeD9oGumfOB.jpg" width="400"/>
+     <div class="mt-4">
+      <h3 class="text-xl font-bold">
+       Calcetines Blancos
+      </h3>
+      <p class="text-gray-600">
+       Calcetines blancos con rayas negras.
+      </p>
+      <p class="text-lg font-bold mt-2">
+       $9.99
+      </p>
+     </div>
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow-lg">
+     <img alt="Imagen de una camiseta roja con un diseño gráfico en el frente" class="w-full h-64 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/tvDN5rlnF6IoMtKrkpuuwrp27x2AGqRRiFWoL1qZ4WH0187E.jpg" width="400"/>
+     <div class="mt-4">
+      <h3 class="text-xl font-bold">
+       Camiseta Roja
+      </h3>
+      <p class="text-gray-600">
+       Camiseta roja con diseño gráfico exclusivo.
+      </p>
+      <p class="text-lg font-bold mt-2">
+       $29.99
+      </p>
+     </div>
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow-lg">
+     <img alt="Imagen de una sudadera con capucha negra con un logo en el pecho" class="w-full h-64 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/SRcUHF9RLS6JE1jbOLGRdPpimelenDtEaxdhxHeJpFuUumfOB.jpg" width="400"/>
+     <div class="mt-4">
+      <h3 class="text-xl font-bold">
+       Sudadera con Capucha Negra
+      </h3>
+      <p class="text-gray-600">
+       Sudadera negra con capucha y logo en el pecho.
+      </p>
+      <p class="text-lg font-bold mt-2">
+       $49.99
+      </p>
+     </div>
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow-lg">
+     <img alt="Imagen de unos pantalones cargo verdes con múltiples bolsillos" class="w-full h-64 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/0GAexb4YuAVtKK3VBmGfgzCJ97IODCSetO3n1f8bheKN6ae7E.jpg" width="400"/>
+     <div class="mt-4">
+      <h3 class="text-xl font-bold">
+       Pantalones Cargo Verdes
+      </h3>
+      <p class="text-gray-600">
+       Pantalones cargo verdes con múltiples bolsillos.
+      </p>
+      <p class="text-lg font-bold mt-2">
+       $39.99
+      </p>
+     </div>
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow-lg">
+     <img alt="Imagen de una gorra roja con un logo bordado en el frente" class="w-full h-64 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/BgfoaUZ5MV1TOqobDVUjsMJfjhjHQuQUj6pVIQ3QA2GIXzvTA.jpg" width="400"/>
+     <div class="mt-4">
+      <h3 class="text-xl font-bold">
+       Gorra Roja
+      </h3>
+      <p class="text-gray-600">
+       Gorra roja con logo bordado en el frente.
+      </p>
+      <p class="text-lg font-bold mt-2">
+       $19.99
+      </p>
+     </div>
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow-lg">
+     <img alt="Imagen de una chaqueta bomber negra con cremallera frontal" class="w-full h-64 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/2CtwhIfSTOT7G6Ol5yc2RZtmCkPDFlxDTQTBqiiHZTUjr53JA.jpg" width="400"/>
+     <div class="mt-4">
+      <h3 class="text-xl font-bold">
+       Chaqueta Bomber Negra
+      </h3>
+      <p class="text-gray-600">
+       Chaqueta bomber negra con cremallera frontal.
+      </p>
+      <p class="text-lg font-bold mt-2">
+       $59.99
+      </p>
+     </div>
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow-lg">
+     <img alt="Imagen de una camiseta gris con un diseño gráfico en la espalda" class="w-full h-64 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/qSyFavD7tYJuIFLuSfLZ6OCRgTWwH6xD7BqzNHZZbDMpr53JA.jpg" width="400"/>
+     <div class="mt-4">
+      <h3 class="text-xl font-bold">
+       Camiseta Gris
+      </h3>
+      <p class="text-gray-600">
+       Camiseta gris con diseño gráfico en la espalda.
+      </p>
+      <p class="text-lg font-bold mt-2">
+       $29.99
+      </p>
+     </div>
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow-lg">
+     <img alt="Imagen de una mochila verde con múltiples compartimentos" class="w-full h-64 object-cover rounded-t-lg" height="400" src="https://storage.googleapis.com/a1aa/image/hwerFJkW8egqn0DXZl1FyqRE2yK9IQyajdP1AJUeWZNaumfOB.jpg" width="400"/>
+     <div class="mt-4">
+      <h3 class="text-xl font-bold">
+       Mochila Verde
+      </h3>
+      <p class="text-gray-600">
+       Mochila verde con múltiples compartimentos.
+      </p>
+      <p class="text-lg font-bold mt-2">
+       $49.99
+      </p>
+     </div>
+    </div>
+   </section>
+  </main>
+  <footer class="bg-black text-white py-4">
+   <div class="container mx-auto text-center">
+    <p>
+     © 2023 Marca Streetwear. Todos los derechos reservados.
+    </p>
+   </div>
+  </footer>
+  <div class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center hidden" id="paymentModal">
+   <div class="bg-white p-8 rounded-lg shadow-lg w-96">
+    <h2 class="text-2xl font-bold mb-4">
+     Pasarela de Pago
+    </h2>
+    <p class="mb-2">
+     <strong>
+      Producto:
+     </strong>
+     <span id="modalItemName">
+     </span>
+    </p>
+    <p class="mb-4">
+     <strong>
+      Precio:
+     </strong>
+     <span id="modalItemPrice">
+     </span>
+    </p>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700" for="cardNumber">
+       Número de Tarjeta
+      </label>
+      <input class="w-full px-3 py-2 border rounded-lg" id="cardNumber" name="cardNumber" type="text"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700" for="expiryDate">
+       Fecha de Expiración
+      </label>
+      <input class="w-full px-3 py-2 border rounded-lg" id="expiryDate" name="expiryDate" type="text"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700" for="cvv">
+       CVV
+      </label>
+      <input class="w-full px-3 py-2 border rounded-lg" id="cvv" name="cvv" type="text"/>
+     </div>
+     <button class="w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800" type="submit">
+      Pagar
+     </button>
+    </form>
+    <div class="mt-4 flex justify-between">
+     <img alt="Código QR para pago con método 1" class="w-24 h-24" height="100" src="https://storage.googleapis.com/a1aa/image/iezfLf2reLqaxS95cR5qVqlXxl3LMwQ489wszwunXOgkyOfdC.jpg" width="100"/>
+     <img alt="Código QR para pago con método 2" class="w-24 h-24" height="100" src="https://storage.googleapis.com/a1aa/image/NX3eDhMYaWSnLCJJPt5HkaojQ45QJuW4vM8xYKNbjywT253JA.jpg" width="100"/>
+    </div>
+    <button class="mt-4 w-full bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400" onclick="closePaymentModal()">
+     Cancelar
+    </button>
+   </div>
+  </div>
+ </body>
 </html>
